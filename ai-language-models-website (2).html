@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modele Językowe AI - Przyszłość komunikacji</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0ea5e9;
+        }
+
+        .features {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #38bdf8;
+        }
+
+        .models {
+            padding: 80px 0;
+        }
+
+        .models-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .model-card {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .model-info {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .model-image {
+            flex: 1;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .model-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .comparison {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table th {
+            background-color: #1e293b;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #e2e8f0;
+        }
+
+        .use-cases {
+            padding: 80px 0;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .use-case-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .use-case-image {
+            height: 200px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .use-case-content {
+            padding: 20px;
+        }
+
+        .about {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button.btn {
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 15px;
+            color: #38bdf8;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .demo-chat {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8fafc;
+            border-radius: 5px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #38bdf8;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+
+        .ai-message {
+            background-color: #e2e8f0;
+            color: #1e293b;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                width: 100%;
+                background-color: #1e293b;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in;
+                z-index: 99;
+            }
+
+            .nav-links.nav-active {
+                transform: translateY(0%);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .about-content, .model-card {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AI<span>LangModels</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Strona główna</a></li>
+                    <li><a href="#features">Zalety</a></li>
+                    <li><a href="#models">Modele</a></li>
+                    <li><a href="#use-cases">Zastosowania</a></li>
+                    <li><a href="#about">O nas</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Przyszłość komunikacji z modelami językowymi AI</h1>
+            <p>Odkryj potencjał zaawansowanych modeli językowych opartych na sztucznej inteligencji, które rewolucjonizują sposób, w jaki komunikujemy się z technologią.</p>
+            <a href="#models" class="btn">Poznaj modele</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Zalety modeli językowych</h2>
+                <p>Poznaj kluczowe korzyści płynące z wykorzystania nowoczesnych systemów AI</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Naturalna komunikacja</h3>
+                    <p>Modele językowe umożliwiają prowadzenie konwersacji w sposób przypominający ludzką komunikację, rozumiejąc kontekst i niuanse językowe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Wielojęzyczność</h3>
+                    <p>Zaawansowane modele obsługują dziesiątki języków, umożliwiając komunikację globalną bez barier językowych.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Adaptacyjność</h3>
+                    <p>Systemy AI uczą się i dostosowują do specyficznych potrzeb, poprawiając swoje działanie wraz z czasem użytkowania.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="models" id="models">
+        <div class="container">
+            <div class="section-title">
+                <h2>Typy modeli językowych</h2>
+                <p>Poznaj różne architektury i zastosowania modeli AI</p>
+            </div>
+            <div class="models-container">
+                <div class="model-card">
+                    <div class="model-info">
+                        <h3>Modele typu Transformer</h3>
+                        <p>Transformery stanowią przełom w rozwoju modeli językowych. Dzięki mechanizmowi uwagi (attention) przetwarzają tekst równolegle, co znacząco poprawia wydajność i jakość generowanych odpowiedzi.</p>
+                        <p>Wykorzystują one samoistną uwagę (self-attention), która pozwala modelowi analizować relacje między wszystkimi słowami w tekście jednocześnie, a nie sekwencyjnie jak wcześniejsze architektury.</p>
+                        <a href="#" class="btn">Dowiedz się więcej</a>
+                    </div>
+                    <div class="model-image">
+                        <img src="/api/placeholder/400/300" alt="Transformer Model">
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="/api/placeholder/400/300" alt="GPT Model">
+                    </div>
+                    <div class="model-info">
+                        <h3>Modele generatywne (GPT)</h3>
+                        <p>Generative Pre-trained Transformers (GPT) to rodzina modeli specjalizujących się w generowaniu tekstu. Trenowane są najpierw na ogromnych korpusach tekstowych, a następnie dostrajane do konkretnych zadań.</p>
+                        <p>Najnowsze wersje tych modeli potrafią tworzyć spójne, kreatywne i kontekstowo odpowiednie teksty, naśladujące ludzki styl pisania.</p>
+                        <a href="#" class="btn">Dowiedz się więcej</a>
+                    </div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-info">
+                        <h3>Modele wielomodalne</h3>
+                        <p>Modele wielomodalne łączą rozumienie języka z interpretacją innych typów danych, takich jak obrazy, dźwięk czy wideo. Pozwala to na bardziej kompleksowe i naturalne interakcje.</p>
+                        <p>Dzięki temu model może "widzieć" i "rozumieć" obrazy, a następnie generować odpowiedzi tekstowe na ich podstawie, lub tworzyć obrazy na podstawie opisu tekstowego.</p>
+                        <a href="#" class="btn">Dowiedz się więcej</a>
+                    </div>
+                    <div class="model-image">
+                        <img src="/api/placeholder/400/300" alt="Multimodal Model">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <div class="section-title">
+                <h2>Porównanie modeli językowych</h2>
+                <p>Analiza różnic między najpopularniejszymi modelami dostępnymi na rynku</p>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Parametry</th>
+                        <th>Specjalizacja</th>
+                        <th>Zastosowania</th>
+                        <th>Mocne strony</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPT-4</td>
+                        <td>Ponad 1 bilion</td>
+                        <td>Generowanie tekstu</td>
+                        <td>Tworzenie treści, programowanie, analiza danych</td>
+                        <td>Rozumienie kontekstu, kreatywność</td>
+                    </tr>
+                    <tr>
+                        <td>LLaMA 2</td>
+                        <td>7-70 miliardów</td>
+                        <td>Open-source</td>
+                        <td>Badania, aplikacje komercyjne, edukacja</td>
+                        <td>Dostępność, modyfikowalność</td>
+                    </tr>
+                    <tr>
+                        <td>Claude</td>
+                        <td>Nieujawnione</td>
+                        <td>Bezpieczeństwo i zgodność</td>
+                        <td>Pomoc biznesowa, analiza dokumentów</td>
+                        <td>Długi kontekst, bezpieczeństwo</td>
+                    </tr>
+                    <tr>
+                        <td>PaLM 2</td>
+                        <td>Ponad 540 miliardów</td>
+                        <td>Wielojęzyczność</td>
+                        <td>Tłumaczenia, aplikacje wielojęzyczne</td>
+                        <td>Obsługa wielu języków, rozumowanie</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="demo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Demo modelu językowego</h2>
+                <p>Zobacz, jak działa interakcja z modelem językowym AI</p>
+            </div>
+            <div class="demo-chat">
+                <div class="chat-messages">
+                    <div class="message ai-message">
+                        Witaj! Jestem asystentem AI. W czym mogę Ci pomóc?
+                    </div>
+                    <div class="message user-message">
+                        Wyjaśnij mi, czym są modele językowe.
+                    </div>
+                    <div class="message ai-message">
+                        Modele językowe to systemy sztucznej inteligencji zaprojektowane do rozumienia, przetwarzania i generowania ludzkiego języka. Wykorzystują uczenie maszynowe, szczególnie techniki głębokiego uczenia, aby analizować ogromne ilości tekstu i uczyć się wzorców, struktur gramatycznych oraz znaczeń słów.
+                    </div>
+                    <div class="message user-message">
+                        Jak działają modele transformerowe?
+                    </div>
+                    <div class="message ai-message">
+                        Modele transformerowe wykorzystują mechanizm uwagi (attention), który pozwala im analizować relacje między wszystkimi słowami w tekście jednocześnie. Dzięki temu mogą lepiej uchwycić kontekst i niuanse językowe. Transformer składa się z enkodera (przetwarzającego wejście) i dekodera (generującego wyjście), a kluczowym elementem jest wielogłowicowa uwaga (multi-head attention), pozwalająca na jednoczesne przetwarzanie różnych aspektów tekstu.
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Napisz wiadomość...">
+                    <button class="btn">Wyślij</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <div class="section-title">
+                <h2>Zastosowania modeli językowych</h2>
+                <p>Odkryj różnorodne sposoby wykorzystania AI w różnych branżach</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/300/200" alt="Business Application">
+                    </div>
+                    <div class="use-case-content">
+                        <h3>Biznes i obsługa klienta</h3>
+                        <p>Automatyzacja obsługi klienta, analiza danych biznesowych, generowanie raportów i prezentacji, wsparcie w podejmowaniu decyzji.</p>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/300/200" alt="Education">
+                    </div>
+                    <div class="use-case-content">
+                        <h3>Edukacja</h3>
+                        <p>Personalizowane nauczanie, automatyczna ocena prac, tworzenie materiałów edukacyjnych, wsparcie w nauce języków obcych.</p>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-image">
+                        <img src="/api/placeholder/300/200" alt="Healthcare">
+                    </div>
+                    <div class="use-case-content">
+                        <h3>Ochrona zdrowia</h3>
+                        <p>Analiza dokumentacji medycznej, wsparcie diagnostyczne, edukacja pacjentów, badania naukowe i analiza publikacji medycznych.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>O naszym zespole</h2>
+                <p>Poznaj ekspertów stojących za rozwojem technologii AI</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/500/300" alt="Nasz zespół">
+                </div>
+                <div class="about-text">
+                    <h3>Nasza misja</h3>
+                    <p>Naszym celem jest demokratyzacja dostępu do zaawansowanych technologii sztucznej inteligencji. Wierzymy, że modele językowe mogą transformować sposób, w jaki pracujemy, uczymy się i komunikujemy.</p>
+                    <p>Nasz zespół składa się z ekspertów w dziedzinie uczenia maszynowego, przetwarzania języka naturalnego i lingwistyki komputerowej. Wspólnie pracujemy nad rozwijaniem modeli, które są nie tylko inteligentne, ale również etyczne i bezpieczne.</p>
+                    <a href="#contact" class="btn">Dołącz do nas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Skontaktuj się z nami</h2>
+                <p style="color: #94a3b8;">Masz pytania dotyczące modeli językowych? Skontaktuj się z naszym zespołem</p>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Imię i nazwisko</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Temat</label>
+                    <select id="interest" name="interest">
+                        <option value="">Wybierz temat</option>
+                        <option value="business">Zastosowania biznesowe</option>
+                        <option value="research">Współpraca badawcza</option>
+                        <option value="education">Edukacja i szkolenia</option>
+                        <option value="other">Inne</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Wiadomość</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Wyślij wiadomość</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">AI<span>LangModels</span></div>
+                    <p>Przyszłość komunikacji z modelami językowymi AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Nawigacja</h3>
+                    <ul>
+                        <li><a href="#home">Strona główna</a></li>
+                        <li><a href="#features">Zalety</a></li>
+                        <li><a href="#models">Modele</a></li>
+                        <li><a href="#use-cases">Zastosowania</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Zasoby</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Dokumentacja</a></li>
+                        <li><a href="#">Tutoriale</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Kontakt</h3>
+                    <ul>
+                        <li><a href="mailto:kontakt@ailangmodels.pl">kontakt@ailangmodels.pl</a></li>
+                        <li><a href="tel:+48123456789">+48 123 456 789</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AILangModels. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburgerowe dla urządzeń mobilnych
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+        });
+
+        // Płynne przewijanie do kotwic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Zamknij menu mobilne po kliknięciu w link
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                }
+            });
+        });
